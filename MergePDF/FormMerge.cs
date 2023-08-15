@@ -59,7 +59,7 @@ namespace MergePDF
             dataGridView1.DataSource = pdfList;
 
             textBoxSelectedPages.PlaceholderText = placeholderText;
-            textBoxSelectedPages.PlaceholderText = Text;
+            textBoxSelectedPages.Text = placeholderText;
         }
 
         private void RadioButton_CheckedChanged(object? sender, EventArgs e)
