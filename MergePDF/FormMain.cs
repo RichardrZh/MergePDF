@@ -76,7 +76,7 @@ namespace MergePDF
             }
             else
             {
-                toolStripStatusLabel1.Text = ((PdfFileInfo) treeView1.SelectedNode.Tag).Filename;
+                toolStripStatusLabel1.Text = ((PdfFileInfo)treeView1.SelectedNode.Tag).Filename;
             }
         }
 
@@ -114,7 +114,7 @@ namespace MergePDF
         {
             if (!treeView1.SelectedNode.Equals(Root))
             {
-                webView21.CoreWebView2.Navigate(((PdfFileInfo) treeView1.SelectedNode.Tag).Filename);
+                webView21.CoreWebView2.Navigate(((PdfFileInfo)treeView1.SelectedNode.Tag).Filename);
             }
         }
 
@@ -181,7 +181,7 @@ namespace MergePDF
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    foreach (string fileName in openFileDialog.FileNames) 
+                    foreach (string fileName in openFileDialog.FileNames)
                     {
                         PdfFileInfo pfi = new PdfFileInfo(fileName);
                         TreeNode node = Root.Nodes.Add(pfi.Name);
