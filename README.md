@@ -12,11 +12,15 @@ The final self-contained build is located in __ .
 
 ## Dependencies
 
-<img align="left" width="80" height="80" src="" alt="iTextSharp icon"> iTextSharp
-```PM> NuGet\Install-Package iTextSharp -Version 5.5.13.3```
+iTextSharp <!-- <img align="left" width="80" height="80" src="" alt="iTextSharp icon">  :todo: -->
+```
+PM> NuGet\Install-Package iTextSharp -Version 5.5.13.3
+```
 
-<img align="left" width="80" height="80" src="" alt="Microsoft.Web.WebView2 icon"> Microsoft.Web.WebView2
-```PM> NuGet\Install-Package Microsoft.Web.WebView2 -Version 1.0.1988-prerelease```
+Microsoft.Web.WebView2
+```
+PM> NuGet\Install-Package Microsoft.Web.WebView2 -Version 1.0.1988-prerelease
+```
 
 ## Project Features
 
@@ -28,5 +32,4 @@ The final self-contained build is located in __ .
 
 ## License
 
-This project is licensed under the GNU Affero General Public License v3.0, 
-for more details visit the [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html "GNU Affero General Public License v3.0") page.
+This project is licensed under the [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.en.html "GNU Affero General Public License v3.0").
