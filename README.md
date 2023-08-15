@@ -36,7 +36,7 @@ selected pdf files.
 ![MergePDF_FormMerge](https://github.com/RichardrZh/MergePDF/assets/34480193/5559dd77-c15d-484a-a642-97f604505782)
 
 For example the above image shows a selection of page 1 of the first 
-pdf, page 2 from the second pdf, page 3 from the first pdf, etc...
+pdf, page 2 from the second pdf, page 2 from the first pdf, etc...
 
 ## License
 
