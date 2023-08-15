@@ -90,7 +90,7 @@ namespace MergePDF
         {
             if (int.TryParse(page, out int num))
             {
-                if (num < 1 || num > pdf.NumPages)
+                if (num < 1 || num > pdf.NumberOfPages)
                 {
                     this.ErrorMessage = $"incorrect pages for file \"{pdf.Name}\"";
                     LogMessage.Log(this.ErrorMessage);

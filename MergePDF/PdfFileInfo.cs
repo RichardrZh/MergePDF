@@ -14,7 +14,7 @@ namespace MergePDF
         public string? ID { get; set; }
         public string Filename { get; }
         public string Name { get; }
-        public int NumPages { get; }
+        public int NumberOfPages { get; }
         
         /// <summary>
         /// list holding selecte pages to be merged
@@ -28,7 +28,7 @@ namespace MergePDF
 
             using (var pdf = new PdfReader(fileName))
             {
-                NumPages = pdf.NumberOfPages;
+                NumberOfPages = pdf.NumberOfPages;
             }
         }
 
@@ -42,7 +42,7 @@ namespace MergePDF
         /// </summary>
         public void AddAllPages()
         {
-            for (int i = 1; i <= this.NumPages; i++)
+            for (int i = 1; i <= this.NumberOfPages; i++)
                 selectedPages.Add(i);
         }
         /// <summary>

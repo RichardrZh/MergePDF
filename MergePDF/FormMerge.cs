@@ -32,22 +32,22 @@ namespace MergePDF
                 ID++;
                 pdf.ID = $"F{ID}";
 
-                if (pdf.NumPages == 1)
+                if (pdf.NumberOfPages == 1)
                 {
                     placeholderText += $"{pdf.ID}(1) ";
                 }
-                else if (pdf.NumPages == 2)
+                else if (pdf.NumberOfPages == 2)
                 {
                     placeholderText += $"{pdf.ID}(1,2) ";
                 }
-                else if (pdf.NumPages > 2 && trigger == false)
+                else if (pdf.NumberOfPages > 2 && trigger == false)
                 {
-                    placeholderText += $"{pdf.ID}(1,2-{pdf.NumPages}) ";
+                    placeholderText += $"{pdf.ID}(1,2-{pdf.NumberOfPages}) ";
                     trigger = true;
                 }
                 else
                 {
-                    placeholderText += $"{pdf.ID}(1-{pdf.NumPages}) ";
+                    placeholderText += $"{pdf.ID}(1-{pdf.NumberOfPages}) ";
                 }
             }
 
@@ -59,6 +59,7 @@ namespace MergePDF
             dataGridView1.DataSource = pdfList;
 
             textBoxSelectedPages.PlaceholderText = placeholderText;
+            textBoxSelectedPages.PlaceholderText = Text;
         }
 
         private void RadioButton_CheckedChanged(object? sender, EventArgs e)

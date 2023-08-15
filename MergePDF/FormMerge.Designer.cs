@@ -38,6 +38,9 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             MergeNow = new Button();
             MergeCancel = new Button();
+            FileIDColumn = new DataGridViewTextBoxColumn();
+            FilenameColumn = new DataGridViewTextBoxColumn();
+            NumberOfPagesColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -74,10 +77,12 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { FileIDColumn, FilenameColumn, NumberOfPagesColumn });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.Margin = new Padding(4, 3, 4, 3);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(933, 306);
             dataGridView1.TabIndex = 0;
             // 
@@ -195,6 +200,28 @@
             MergeCancel.UseVisualStyleBackColor = true;
             MergeCancel.Click += MergeCancel_Click;
             // 
+            // FileIDColumn
+            // 
+            FileIDColumn.DataPropertyName = "ID";
+            FileIDColumn.HeaderText = "File ID";
+            FileIDColumn.Name = "FileIDColumn";
+            FileIDColumn.ReadOnly = true;
+            // 
+            // FilenameColumn
+            // 
+            FilenameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            FilenameColumn.DataPropertyName = "Name";
+            FilenameColumn.HeaderText = "File Name";
+            FilenameColumn.Name = "FilenameColumn";
+            FilenameColumn.ReadOnly = true;
+            // 
+            // NumberOfPagesColumn
+            // 
+            NumberOfPagesColumn.DataPropertyName = "NumberOfPages";
+            NumberOfPagesColumn.HeaderText = "Total Pages";
+            NumberOfPagesColumn.Name = "NumberOfPagesColumn";
+            NumberOfPagesColumn.ReadOnly = true;
+            // 
             // FormMerge
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -203,7 +230,7 @@
             Controls.Add(splitContainer1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "FormMerge";
-            Text = "Form2";
+            Text = "Merge Options";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -231,5 +258,8 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Button MergeCancel;
         private Button MergeNow;
+        private DataGridViewTextBoxColumn FileIDColumn;
+        private DataGridViewTextBoxColumn FilenameColumn;
+        private DataGridViewTextBoxColumn NumberOfPagesColumn;
     }
 }
