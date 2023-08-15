@@ -17,7 +17,7 @@ The final self-contained build is located in ___.
 PM> NuGet\Install-Package iTextSharp -Version 5.5.13.3
 ```
 
-#### Microsoft.Web.WebView2
+### Microsoft.Web.WebView2
 ```
 PM> NuGet\Install-Package Microsoft.Web.WebView2 -Version 1.0.1988-prerelease
 ```

@@ -108,6 +108,7 @@
             // About
             // 
             About.Alignment = ToolStripItemAlignment.Right;
+            About.ForeColor = Color.Blue;
             About.Name = "About";
             About.Size = new Size(40, 22);
             About.Text = "About";
