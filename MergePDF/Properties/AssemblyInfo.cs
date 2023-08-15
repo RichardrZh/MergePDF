@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MergePDF")]
-[assembly: AssemblyDescription("A lightweight PDF merging software that merges PDFs by appending them by page. For any issues, see <github_link> or contact me at richard.zhuang91@gmail.com")]
+[assembly: AssemblyDescription("A lightweight PDF merging software that merges PDFs by appending them by page. For any issues, see https://github.com/RichardrZh/MergePDF or contact me at richard.zhuang91@gmail.com.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Richard Zhuang")]
 [assembly: AssemblyProduct("MergePDF")]
