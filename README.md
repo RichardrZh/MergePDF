@@ -27,12 +27,13 @@ PM> NuGet\Install-Package Microsoft.Web.WebView2 -Version 1.0.1988-prerelease
 This application allows you to select multiple pdf files, to merge into a 
 single pdf file. 
 
-<!-- mainForm img -->
+![MergePDF_FormMain](https://github.com/RichardrZh/MergePDF/assets/34480193/5d9b04ec-d5a8-4fb4-aba2-3d793d6268bc)
+
 
 It has advanced merge options allowing for page selection and reordering from
 selected pdf files.
 
-<!-- mergeForm img -->
+![MergePDF_FormMerge](https://github.com/RichardrZh/MergePDF/assets/34480193/5559dd77-c15d-484a-a642-97f604505782)
 
 For example the above image shows a selection of page 1 of the first 
 pdf, page 2 from the second pdf, page 3 from the first pdf, etc...
