@@ -10,25 +10,31 @@ using System.Threading.Tasks;
 namespace MergePDF
 {
     /// <summary>
-    /// Pdf files to be merged with selected pages
+    /// Represents a list of Pdf files (with their selected pages) to be merged.
     /// </summary>
     internal class MergeOption : List<PdfFileInfo>
     {
         /// <summary>
-        /// Error message if data input is invalid
+        /// Gets or sets an error message (for invalid data input).
         /// </summary>
         public string? ErrorMessage { get; private set; }
 
+        /// <summary>
+        /// A constructor for MergeOption. Initializes the MergeOPtion with a list of <paramref name="pdfFiles">pdf files</paramref>.
+        /// </summary>
+        /// <param name="pdfFiles">A list of PdfFileInfo objects.</param>
+        /// <seealso cref="MergeOption"/>
+        /// <seealso cref="PdfFileInfo"/>
         public MergeOption(List<PdfFileInfo> pdfFiles)
         {
             base.AddRange(pdfFiles);
         }
 
         /// <summary>
-        /// validate if the data input is correct
+        /// Validates if the data input is correct for a range of files and pages.
         /// </summary>
-        /// <param name="options">select files and pages</param>
-        /// <returns>true if valid</returns>
+        /// <param name="options">String representing selected files and pages. Files are represented in the following format: F&lt;<see cref="PdfFileInfo.ID"></see>&gt;(<see cref="PdfFileInfo.selectedPages">&lt;selected pages delimited by "," "-" eg. "1,3,5-7"&gt;</see>) , note: &lt; &gt; are used for clarity and are not part of the string.</param>
+        /// <returns>Returns true if valid.</returns>
         public bool ValidateInput(string options)
         {
             string[] optionData = options.Split(new char[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
@@ -86,6 +92,14 @@ namespace MergePDF
             }
             return true;
         }
+
+        /// <summary>
+        /// Validates if the data input is correct for a single page in a file.
+        /// </summary>
+        /// <param name="pdf">The <see cref="PdfFileInfo">file</see> containing the page.</param>
+        /// <param name="page">The page number of the page being validated.</param>
+        /// <seealso cref="PdfFileInfo"/>
+        /// <returns>Returns true if valid.</returns>
         private bool ValidatePage(PdfFileInfo pdf, string page)
         {
             if (int.TryParse(page, out int num))
@@ -106,6 +120,10 @@ namespace MergePDF
             return true;
         }
 
+        /// <summary>
+        /// Merges the pages in this <see cref="MergeOption">MergeOption</see> and saves it to the specified <paramref name="file">file</paramref>.
+        /// </summary>
+        /// <param name="file">The resulting pdf file containing merged pages. The string is the file path including extension.</param>
         public void Merge(string file)
         {
             LogMessage.Log($"Merging to file\"{file}\".");

@@ -14,15 +14,18 @@ using System.Windows.Forms;
 
 namespace MergePDF
 {
+    /// <summary>
+    /// The main form of the application. 
+    /// </summary>
     public partial class FormMain : Form
     {
         /// <summary>
-        /// Node holding uploaded pdf files (to be merged)
+        /// The root node of the <see cref="TreeNode"/> holding uploaded pdf files.
         /// </summary>
         private TreeNode Root;
 
         /// <summary>
-        /// Available merge actions
+        /// Available merge actions. Each <see cref="MergeAction"/> must mirror the name property of a toolstrip1 child component.
         /// </summary>
         enum MergeAction
         {
@@ -35,6 +38,9 @@ namespace MergePDF
             About
         }
 
+        /// <summary>
+        /// A constructor for <see cref="FormMain"/>. Initializes all components.
+        /// </summary>
         public FormMain()
         {
             InitializeComponent();
@@ -48,6 +54,11 @@ namespace MergePDF
             UpdateComponents();
         }
 
+        /// <summary>
+        /// Initializes WebView2 component.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WebView21_CoreWebView2InitializationCompleted(object? sender, CoreWebView2InitializationCompletedEventArgs e)
         {
             webView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
@@ -55,12 +66,19 @@ namespace MergePDF
             webView21.NavigateToString("<html><body></body></html>");
         }
 
+        /// <summary>
+        /// Updates <see cref="FormMain"/> components after treeView select/focus.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             UpdateComponents();
         }
 
-
+        /// <summary>
+        /// Updates all components in the <see cref="FormMain"/> form.
+        /// </summary>
         private void UpdateComponents()
         {
             UpdateStatusStrip1();
@@ -68,6 +86,9 @@ namespace MergePDF
             UpdateWebView21();
         }
 
+        /// <summary>
+        /// Updates the StatusStrip to the filename of the currently selected treeView node.
+        /// </summary>
         private void UpdateStatusStrip1()
         {
             if (treeView1.SelectedNode.Equals(Root))
@@ -80,6 +101,9 @@ namespace MergePDF
             }
         }
 
+        /// <summary>
+        /// Updates the states of all buttons.
+        /// </summary>
         private void UpdateButtons()
         {
             RemoveFile.Enabled = true;
@@ -110,6 +134,9 @@ namespace MergePDF
             }
         }
 
+        /// <summary>
+        /// Updates the WebView2 to display the pdf file of the currently selected treeView node.
+        /// </summary>
         private void UpdateWebView21()
         {
             if (!treeView1.SelectedNode.Equals(Root))
@@ -128,8 +155,7 @@ namespace MergePDF
             // try parsing toolstripitem name to merge action enum
             if (!Enum.TryParse<MergeAction>(e.ClickedItem.Name, out MergeAction action))
             {
-                //error handling, no matching mergeaction action available
-                //throw exception custom?
+                LogMessage.Log($"invalid toolstripitem ({e}); no matching MergeAction");
                 return;
             }
 
@@ -162,6 +188,9 @@ namespace MergePDF
             }
         }
 
+        /// <summary>
+        /// Handles the <see cref="MergeAction.About">About</see> action.
+        /// </summary>
         private void AboutHandler()
         {
             // opens generated aboutbox
@@ -172,6 +201,9 @@ namespace MergePDF
             }
         }
 
+        /// <summary>
+        /// Handles the <see cref="MergeAction.AddFile">AddFile</see> action.
+        /// </summary>
         private void AddFileHandler()
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -192,7 +224,9 @@ namespace MergePDF
             }
         }
 
-
+        /// <summary>
+        /// Handles the <see cref="MergeAction.RemoveFile">RemoveFile</see> action.
+        /// </summary>
         private void RemoveFileHandler()
         {
             if (!treeView1.SelectedNode.Equals(Root))
@@ -205,6 +239,9 @@ namespace MergePDF
             }
         }
 
+        /// <summary>
+        /// Handles the <see cref="MergeAction.MoveUp">MoveUp</see> action.
+        /// </summary>
         private void MoveUpHandler()
         {
             int nodeIdx = Root.Nodes.IndexOf(treeView1.SelectedNode);
@@ -217,6 +254,9 @@ namespace MergePDF
             }
         }
 
+        /// <summary>
+        /// Handles the <see cref="MergeAction.MoveDown">MoveDown</see> action.
+        /// </summary>
         private void MoveDownHandler()
         {
             int nodeIdx = Root.Nodes.IndexOf(treeView1.SelectedNode);
@@ -229,6 +269,11 @@ namespace MergePDF
             }
         }
 
+        /// <summary>
+        /// Swaps the selected nodes <paramref name="node1"/>, <paramref name="node2"/>.
+        /// </summary>
+        /// <param name="node1">A node from a <see cref="TreeNode"/>.</param>
+        /// <param name="node2">A node from a <see cref="TreeNode"/>.</param>
         private void SwapTreeNodes(TreeNode node1, TreeNode node2)
         {
             // swap tags of node1/node2
@@ -241,6 +286,10 @@ namespace MergePDF
             node2.Text = ((PdfFileInfo)node2.Tag).Name;
         }
 
+        /// <summary>
+        /// Handles the <see cref="MergeAction.MergeFile">MergeFile</see> action. Opens the <see cref="FormMerge"/> form.
+        /// </summary>
+        /// <seealso cref="FormMerge"/>
         private void MergeFileHandler()
         {
             List<PdfFileInfo> pdfs = new List<PdfFileInfo>();

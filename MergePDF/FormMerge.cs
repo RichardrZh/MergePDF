@@ -13,19 +13,35 @@ using System.Windows.Forms;
 
 namespace MergePDF
 {
-    public partial class FormMerge : Form
+    /// <summary>
+    /// The form for merging pdf files.
+    /// </summary>
+    internal partial class FormMerge : Form
     {
+        /// <summary>
+        /// A list of <see cref="PdfFileInfo">pdf files</see>.
+        /// </summary>
         internal List<PdfFileInfo> pdfList;
+
+        /// <summary>
+        /// A <see cref="MergeOption">MergeOption</see> representing the list of pdf files/pages to be merged.
+        /// </summary>
         internal MergeOption? MergeOption;
 
-        internal FormMerge(List<PdfFileInfo> pdfs)
+        /// <summary>
+        /// The constructor for <see cref="FormMerge"/>.
+        /// </summary>
+        /// <param name="pdfs">A list of <see cref="PdfFileInfo">pdf files</see>.</param>
+        public FormMerge(List<PdfFileInfo> pdfs)
         {
             InitializeComponent();
 
+            // update fields
             pdfList = pdfs;
             int ID = 0;
             bool trigger = false;
 
+            // get placeholder text
             string placeholderText = "";
             foreach (PdfFileInfo pdf in pdfList)
             {
@@ -51,6 +67,7 @@ namespace MergePDF
                 }
             }
 
+            // initialize component values
             radioButtonAll.CheckedChanged += RadioButton_CheckedChanged;
             radioButtonSelected.CheckedChanged += RadioButton_CheckedChanged;
             radioButtonAll.Checked = true;
@@ -62,16 +79,31 @@ namespace MergePDF
             textBoxSelectedPages.Text = placeholderText;
         }
 
+        /// <summary>
+        /// Enables/Disables advanced page selection, from RadioButton user input. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioButton_CheckedChanged(object? sender, EventArgs e)
         {
             textBoxSelectedPages.Enabled = radioButtonSelected.Checked;
         }
 
+        /// <summary>
+        /// Closes the <see cref="FormMerge"/> form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MergeCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
 
+        /// <summary>
+        /// Merges the selected files/pages and closes the <see cref="FormMerge"/> form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MergeNow_Click(object sender, EventArgs e)
         {
             MergeOption option = new MergeOption(pdfList);

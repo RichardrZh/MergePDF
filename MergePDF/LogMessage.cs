@@ -8,12 +8,15 @@ namespace MergePDF
 {
     internal class LogMessage
     {
+        /// <summary>
+        /// A boolean representing a debug mode. When true, debug utilities such as error logging are enabled.
+        /// </summary>
         static bool bDebug = true;
 
         /// <summary>
-        /// Debug Log message 
+        /// Logs a debug message.
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">The message to be logged.</param>
         public static void Log(string message)
         {
             if (bDebug)
