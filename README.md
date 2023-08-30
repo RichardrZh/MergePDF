@@ -8,7 +8,7 @@
 MergePDF is a simple lightweight windows forms application for merging PDFs, 
 written in C\#, and published using .NET Core. 
 
-The final self-contained build is located in ___.
+<!-- The final self-contained build is located in the ```release/``` folder. Note: as github file size limit is 100mb and final self-contained exe is ~170mb, the exe cannot be uploaded. -->
 
 ## Dependencies
 
